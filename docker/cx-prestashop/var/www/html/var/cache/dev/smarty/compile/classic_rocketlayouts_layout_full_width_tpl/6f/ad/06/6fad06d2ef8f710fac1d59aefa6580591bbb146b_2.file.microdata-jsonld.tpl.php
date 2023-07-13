@@ -1,0 +1,307 @@
+<?php
+/* Smarty version 4.3.1, created on 2023-07-13 17:26:30
+  from '/var/www/html/themes/classic-rocket/templates/_partials/microdata-jsonld.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.1',
+  'unifunc' => 'content_64b06c065b3b04_64895957',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '6fad06d2ef8f710fac1d59aefa6580591bbb146b' => 
+    array (
+      0 => '/var/www/html/themes/classic-rocket/templates/_partials/microdata-jsonld.tpl',
+      1 => 1689121044,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_64b06c065b3b04_64895957 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/vendor/smarty/smarty/libs/plugins/modifier.count.php','function'=>'smarty_modifier_count',),1=>array('file'=>'/var/www/html/vendor/smarty/smarty/libs/plugins/modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
+?>
+
+<meta property="og:title" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['page']->value['meta']['title'], ENT_QUOTES, 'UTF-8');?>
+"/>
+<meta property="og:description" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['page']->value['meta']['description'], ENT_QUOTES, 'UTF-8');?>
+"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['current_url'], ENT_QUOTES, 'UTF-8');?>
+"/>
+<meta property="og:site_name" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['name'], ENT_QUOTES, 'UTF-8');?>
+"/>
+
+<?php if ((isset($_smarty_tpl->tpl_vars['product']->value)) && $_smarty_tpl->tpl_vars['page']->value['page_name'] == 'product') {?>
+  <meta property="og:type" content="product"/>
+  <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['product']->value['images']) > 0) {?>
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['product']->value['images'], 'p_img', false, NULL, 'p_img_list', array (
+  'last' => true,
+  'iteration' => true,
+  'total' => true,
+));
+$_smarty_tpl->tpl_vars['p_img']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['p_img']->value) {
+$_smarty_tpl->tpl_vars['p_img']->do_else = false;
+$_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['iteration']++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['last'] = $_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['iteration'] === $_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['total'];
+?>
+      <meta property="og:image" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['p_img']->value['large']['url'], ENT_QUOTES, 'UTF-8');?>
+"/>
+    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+    <meta property="og:image:height" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['p_img']->value['large']['height'], ENT_QUOTES, 'UTF-8');?>
+"/>
+    <meta property="og:image:width" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['p_img']->value['large']['width'], ENT_QUOTES, 'UTF-8');?>
+"/>
+
+  <?php }?>
+  <?php if ($_smarty_tpl->tpl_vars['product']->value['show_price']) {?>
+    <meta property="product:price:amount" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['price_amount'], ENT_QUOTES, 'UTF-8');?>
+" />
+    <meta property="product:price:currency" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['currency']->value['iso_code'], ENT_QUOTES, 'UTF-8');?>
+" />
+    <?php if ($_smarty_tpl->tpl_vars['product']->value['has_discount']) {?>
+      <meta property="product:price:standard_amount" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['regular_price_amount'], ENT_QUOTES, 'UTF-8');?>
+" />
+    <?php }?>
+  <?php }?>
+  <?php if ($_smarty_tpl->tpl_vars['product_manufacturer']->value->name) {?>
+    <meta property="product:brand" content="<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['product_manufacturer']->value->name,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+" />
+  <?php }?>
+  <meta property="og:availability" content="<?php if ($_smarty_tpl->tpl_vars['product']->value['quantity_all_versions'] > 0 || $_smarty_tpl->tpl_vars['product']->value['allow_oosp'] > 0) {?>instock<?php } else { ?>out of stock<?php }?>" />
+<?php } elseif ($_smarty_tpl->tpl_vars['page']->value['page_name'] === 'category' && (isset($_smarty_tpl->tpl_vars['category']->value)) && $_smarty_tpl->tpl_vars['category']->value['image']['large']['url']) {?>
+    <meta property="og:image" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['category']->value['image']['large']['url'], ENT_QUOTES, 'UTF-8');?>
+"/>
+<?php } else { ?>
+    <meta property="og:image" content="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['shop_domain_url'], ENT_QUOTES, 'UTF-8');
+echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['logo'], ENT_QUOTES, 'UTF-8');?>
+"/>
+<?php }
+echo '<script'; ?>
+ type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "Organization",
+    "name" : "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['name'], ENT_QUOTES, 'UTF-8');?>
+",
+    "url" : "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['pages']['index'], ENT_QUOTES, 'UTF-8');?>
+",
+    "logo" : {
+        "@type":"ImageObject",
+        "url":"<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['shop_domain_url'], ENT_QUOTES, 'UTF-8');
+echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['logo'], ENT_QUOTES, 'UTF-8');?>
+"
+    }
+}
+
+<?php echo '</script'; ?>
+>
+
+<?php echo '<script'; ?>
+ type="application/ld+json">
+{
+    "@context":"http://schema.org",
+    "@type":"WebPage",
+    "isPartOf": {
+        "@type":"WebSite",
+        "url":  "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['pages']['index'], ENT_QUOTES, 'UTF-8');?>
+",
+        "name": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['name'], ENT_QUOTES, 'UTF-8');?>
+"
+    },
+    "name": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['page']->value['meta']['title'], ENT_QUOTES, 'UTF-8');?>
+",
+    "url":  "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['current_url'], ENT_QUOTES, 'UTF-8');?>
+"
+}
+
+
+<?php echo '</script'; ?>
+>
+<?php if ($_smarty_tpl->tpl_vars['page']->value['page_name'] == 'index') {?>
+    <?php echo '<script'; ?>
+ type="application/ld+json">
+{
+	"@context":	"http://schema.org",
+	"@type": "WebSite",
+    "url" : "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['pages']['index'], ENT_QUOTES, 'UTF-8');?>
+",
+	"image": {
+	"@type": "ImageObject",
+    "url":"<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['urls']->value['shop_domain_url'], ENT_QUOTES, 'UTF-8');
+echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['logo'], ENT_QUOTES, 'UTF-8');?>
+"
+	},
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'str_replace' ][ 0 ], array( '--search_term_string--','{search_term_string}',$_smarty_tpl->tpl_vars['link']->value->getPageLink('search',true,null,array('search_query'=>'--search_term_string--')) )), ENT_QUOTES, 'UTF-8');?>
+",
+     "query-input": "required name=search_term_string"
+	 }
+}
+
+
+    <?php echo '</script'; ?>
+>
+<?php }
+if ((isset($_smarty_tpl->tpl_vars['product']->value)) && $_smarty_tpl->tpl_vars['page']->value['page_name'] == 'product') {?>
+    <?php echo '<script'; ?>
+ type="application/ld+json">
+    {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['name'], ENT_QUOTES, 'UTF-8');?>
+",
+    "description": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['page']->value['meta']['description'], ENT_QUOTES, 'UTF-8');?>
+",
+    "category": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['category_name'], ENT_QUOTES, 'UTF-8');?>
+",
+    <?php if ((isset($_smarty_tpl->tpl_vars['product']->value['cover']))) {?>"image" :"<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['cover']['bySize']['home_default']['url'], ENT_QUOTES, 'UTF-8');?>
+",<?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['product']->value['reference']) {?>"sku": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['reference'], ENT_QUOTES, 'UTF-8');?>
+",<?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['product']->value['ean13']) {?>
+      "gtin13": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['ean13'], ENT_QUOTES, 'UTF-8');?>
+",
+    <?php } elseif ($_smarty_tpl->tpl_vars['product']->value['upc']) {?>
+      "gtin13": "0<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['upc'], ENT_QUOTES, 'UTF-8');?>
+",
+    <?php } elseif ($_smarty_tpl->tpl_vars['product']->value['isbn']) {?>
+      "isbn": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['isbn'], ENT_QUOTES, 'UTF-8');?>
+",
+    <?php } elseif ($_smarty_tpl->tpl_vars['product']->value['reference']) {?>
+      "mpn": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['reference'], ENT_QUOTES, 'UTF-8');?>
+",
+    <?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['product_manufacturer']->value->name || $_smarty_tpl->tpl_vars['shop']->value['name']) {?>"brand": {
+        "@type": "Thing",
+        "name": "<?php if ($_smarty_tpl->tpl_vars['product_manufacturer']->value->name) {
+echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['product_manufacturer']->value->name,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');
+} else {
+echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['name'], ENT_QUOTES, 'UTF-8');
+}?>"
+    },<?php }?>
+    <?php if ((isset($_smarty_tpl->tpl_vars['nbComments']->value)) && $_smarty_tpl->tpl_vars['nbComments']->value && $_smarty_tpl->tpl_vars['ratings']->value['avg']) {?>"aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( round((float) $_smarty_tpl->tpl_vars['ratings']->value['avg'], (int) 1, (int) 1),'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+",
+        "reviewCount": "<?php echo htmlspecialchars((string) call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['nbComments']->value,'html','UTF-8' )), ENT_QUOTES, 'UTF-8');?>
+"
+    },<?php }?>
+    <?php if ((isset($_smarty_tpl->tpl_vars['product']->value['weight'])) && ($_smarty_tpl->tpl_vars['product']->value['weight'] != 0)) {?>
+    "weight": {
+        "@context": "https://schema.org",
+        "@type": "QuantitativeValue",
+        "value": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['weight'], ENT_QUOTES, 'UTF-8');?>
+",
+        "unitCode": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['weight_unit'], ENT_QUOTES, 'UTF-8');?>
+"
+    },<?php }?>
+      <?php if ($_smarty_tpl->tpl_vars['product']->value['show_price']) {?>
+    "offers": {
+        "@type": "Offer",
+        "priceCurrency": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['currency']->value['iso_code'], ENT_QUOTES, 'UTF-8');?>
+",
+        "name": "<?php echo htmlspecialchars((string) strip_tags((string) $_smarty_tpl->tpl_vars['product']->value['name']), ENT_QUOTES, 'UTF-8');?>
+",
+        "price": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['price_amount'], ENT_QUOTES, 'UTF-8');?>
+",
+        "url": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['url'], ENT_QUOTES, 'UTF-8');?>
+",
+        "priceValidUntil": "<?php echo htmlspecialchars((string) smarty_modifier_date_format((time()+(int) (60*60*24*15)),"%Y-%m-%d"), ENT_QUOTES, 'UTF-8');?>
+",
+        <?php if (smarty_modifier_count($_smarty_tpl->tpl_vars['product']->value['images']) > 0) {?>
+        "image": [<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['product']->value['images'], 'p_img', false, NULL, 'p_img_list', array (
+  'last' => true,
+  'iteration' => true,
+  'total' => true,
+));
+$_smarty_tpl->tpl_vars['p_img']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['p_img']->value) {
+$_smarty_tpl->tpl_vars['p_img']->do_else = false;
+$_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['iteration']++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['last'] = $_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['iteration'] === $_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['total'];
+?>"<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['p_img']->value['large']['url'], ENT_QUOTES, 'UTF-8');?>
+"<?php if (!(isset($_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_p_img_list']->value['last'] : null)) {?>,<?php }
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>],
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['product']->value['ean13']) {?>
+        "gtin13": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['ean13'], ENT_QUOTES, 'UTF-8');?>
+",
+        <?php } elseif ($_smarty_tpl->tpl_vars['product']->value['upc']) {?>
+        "gtin13": "0<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['upc'], ENT_QUOTES, 'UTF-8');?>
+",
+        <?php } elseif ($_smarty_tpl->tpl_vars['product']->value['isbn']) {?>
+          "isbn": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['isbn'], ENT_QUOTES, 'UTF-8');?>
+",
+        <?php } elseif ($_smarty_tpl->tpl_vars['product']->value['reference']) {?>
+          "mpn": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['reference'], ENT_QUOTES, 'UTF-8');?>
+",
+        <?php }?>
+        "sku": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['product']->value['reference'], ENT_QUOTES, 'UTF-8');?>
+",
+        <?php if ($_smarty_tpl->tpl_vars['product']->value['condition'] == 'new') {?>"itemCondition": "http://schema.org/NewCondition",<?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['product']->value['show_condition'] > 0) {?>
+        <?php if ($_smarty_tpl->tpl_vars['product']->value['condition'] == 'used') {?>"itemCondition": "http://schema.org/UsedCondition",<?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['product']->value['condition'] == 'refurbished') {?>"itemCondition": "http://schema.org/RefurbishedCondition",<?php }?>
+        <?php }?>
+        "availability":<?php if ($_smarty_tpl->tpl_vars['product']->value['quantity'] > 0 || $_smarty_tpl->tpl_vars['product']->value['allow_oosp'] > 0) {?> "http://schema.org/InStock"<?php } else { ?> "http://schema.org/OutOfStock"<?php }?>,
+        "seller": {
+            "@type": "Organization",
+            "name": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['shop']->value['name'], ENT_QUOTES, 'UTF-8');?>
+"
+        }
+    }
+    <?php }?>
+
+}
+
+
+    <?php echo '</script'; ?>
+>
+<?php }
+if ((isset($_smarty_tpl->tpl_vars['breadcrumb']->value['links'][1]))) {
+echo '<script'; ?>
+ type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['breadcrumb']->value['links'], 'path', false, NULL, 'breadcrumb', array (
+  'iteration' => true,
+  'last' => true,
+  'total' => true,
+));
+$_smarty_tpl->tpl_vars['path']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['path']->value) {
+$_smarty_tpl->tpl_vars['path']->do_else = false;
+$_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['iteration']++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['last'] = $_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['iteration'] === $_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['total'];
+?>
+    {
+    "@type": "ListItem",
+    "position": <?php echo htmlspecialchars((string) (isset($_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['iteration'] : null), ENT_QUOTES, 'UTF-8');?>
+,
+    "name": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['path']->value['title'], ENT_QUOTES, 'UTF-8');?>
+",
+    "item": "<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['path']->value['url'], ENT_QUOTES, 'UTF-8');?>
+"
+    }<?php if (!(isset($_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_breadcrumb']->value['last'] : null)) {?>,<?php }?>
+    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>]
+    }
+    <?php echo '</script'; ?>
+>
+<?php }
+}
+}
